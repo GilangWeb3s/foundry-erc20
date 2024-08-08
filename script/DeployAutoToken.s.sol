@@ -7,9 +7,10 @@ import {AutoToken} from "../src/AutoToken.sol";
 contract DeployAutoToken is Script {
     uint256 public constant INITIAL_SUPPLY = 1000 ether;
 
-    function run() external {
+    function run() external returns(AutoToken) {
         vm.startBroadcast();
-        new AutoToken(INITIAL_SUPPLY);
+        AutoToken at = new AutoToken(INITIAL_SUPPLY);
         vm.stopBroadcast();
+        return at;
     }
 }
